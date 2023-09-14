@@ -23,6 +23,9 @@ document.addEventListener("DOMContentLoaded", function() {
     };
 
     function pushOperator(operator) {
+        if (operatorSignal === 1) {
+            calculate(calculation);
+        };
         calculation.push(operator);
         indexCount = 2;
         operatorSignal = 1;
@@ -78,18 +81,43 @@ document.addEventListener("DOMContentLoaded", function() {
         return calculation;
     };
 
-    // function changeSign() {
-    //     let num;
-    //     if (operatorSignal === 0) {
-    //         console.log("this works");
-    //         num = parseFloat(firstNum) * -1;
-    //         firstNum = num.toString();
-    //     } else {
-    //         console.log("this works");
-    //         num = parseFloat(secondNum) * -1;
-    //         secondNum = num.toString();
-    //     };
-    // };
+    function changeSign() {
+        let num;
+        if (operatorSignal === 0) {
+            num = parseFloat(firstNum) * -1;
+            firstNum = num.toString();
+            calculation[0] = firstNum;
+            resultDisplay.innerHTML = firstNum;
+            console.log(calculation);
+            return calculation;
+        } else {
+            num = parseFloat(secondNum) * -1;
+            secondNum = num.toString();
+            calculation[2] = secondNum;
+            resultDisplay.innerHTML = secondNum;
+            console.log(calculation);
+            return calculation;
+        };
+    };
+
+    function convertToPercent() {
+        let num;
+        if (operatorSignal === 0) {
+            num = parseFloat(firstNum) / 100;
+            firstNum = num.toString();
+            calculation[0] = firstNum;
+            resultDisplay.innerHTML = firstNum;
+            console.log(calculation);
+            return calculation;
+        } else {
+            num = parseFloat(secondNum) / 100;
+            secondNum = num.toString();
+            calculation[2] = secondNum;
+            resultDisplay.innerHTML = secondNum;
+            console.log(calculation);
+            return calculation;
+        };
+    };
 
     const resultDisplay = document.querySelector("#result_display");
 
@@ -180,8 +208,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const plusMinus = document.querySelector("#plus_minus");
     plusMinus.addEventListener("click", function() {
-        console.log("clicked");
         changeSign();
+    });
+
+    const percent = document.querySelector("#percent");
+    percent.addEventListener("click", function() {
+        convertToPercent();
     });
 
 });
