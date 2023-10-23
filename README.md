@@ -8,3 +8,6 @@
 #
 # Further improvements: 
 # Needs error handling (preventing input of multiple decimals in one number, multiple operands entered before second number), rounding/display of digits to omit trailing zeros, handling of large numbers (or cut off based on screen size). 
+#
+# Link to deployed project:
+# https://sprightly-ganache-1f056d.netlify.app/
